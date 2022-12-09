@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert Page</title>
+</head>
+<body>
+	<h1>Insert Page</h1>
+	<hr/>
+	<form method="post">
+		<legend>INSERT DATA</legend>
+		<table>
+			<tr>
+				<td><labe>Name</labe></td>
+				<td><input type="text" name="id" value= "<%= data.id %>" disabled/></td>
+			</tr>		
+			<tr>
+				<td><labe>TITLE</labe></td>
+				<td><input type="text" name="title" value= "<%= data.title %>"/></td>
+			</tr>
+			<tr>
+				<td><labe>CONTENTS </labe></td>
+				<td><input type="text" name="contests" value= "<%= data.contents %>"/></td>
+			</tr>
+		</table>
+		<input type="submit"/>
+	</form>
+</body>
+</html>
