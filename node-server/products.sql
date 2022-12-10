@@ -1,7 +1,7 @@
 create table products (
    id int not null auto_increment primary key,
    title varchar(50) not null,
-   contents varchar(50) not null,
+   contents varchar(300) not null,
 );
 
 

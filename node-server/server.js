@@ -145,14 +145,14 @@ app.get('/board', function (request, response) {
 app.get('/delete/:id', function (request, response) { 
     // 데이터 베이스 쿼리를 실행합니다
     connection.query('DELETE FROM products WHERE id=?', [request.param('id')], function () {
-        // @´?´??
+      
         response.redirect('/board');
     });
 });
 app.get('/insert', function (request, response) {	
-    // ?O; P½4??
+   
     fs.readFile(__dirname + '/board/insert.html', 'utf8', function (error, data) {
-        // @´?´??
+        
         response.send(data);
     });
 });
