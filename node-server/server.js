@@ -160,8 +160,8 @@ app.post('/insert', function (request, response) {
    
     var body = request.body;
 
-    connection.query('INSERT INTO products (title, contents) VALUES (?, ?)', [
-        body.title, body.contents
+    connection.query('INSERT INTO products (name, modelnumber, series) VALUES (?, ?, ?)', [
+        body.name, body.modelnumber , body.series
     ], function () {
         
         response.redirect('/board');
@@ -185,8 +185,8 @@ app.post('/edit/:id', function (request, response) {
 	   
     var body = request.body
 
-    connection.query('UPDATE products SET title = ?, contents = ? WHERE id =?', [
-        body.title, body.contents, request.param('id')
+    connection.query('UPDATE products SET name = ?, modelnumber = ? WHERE id =?', [
+        body.name, body.modelnumber, request.param('id')
     ], function () {
         response.redirect('/board');
     });
