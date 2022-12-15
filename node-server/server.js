@@ -183,6 +183,56 @@ app.post('/edit/:id', function (request, response) {
     });
 });
 
+// todo
+app.get('/todo', function (request, response) { 
+
+    fs.readFile(__dirname + '/todo/todo.html', 'utf8', function (error, data) {
+
+        connection.query('SELECT * FROM todolist', function (error, results) {
+ 
+            response.send(ejs.render(data, {
+                data: results
+            }));
+        });
+    });
+}); 
+
+//태그, 데이터 삽입 처리 관련
+app.get('/remove/:index', function (request, response) { 
+    // 데이터 베이스 쿼리를 실행합니다
+    connection.query('DELETE FROM todolist WHERE index=?', [request.param('index')], function () {
+      
+        response.redirect('/todo');
+    });
+});
+
+app.get('/delete/:index', function (request, response) { 
+    // 데이터 베이스 쿼리를 실행합니다
+    connection.query('DELETE FROM products WHERE index=?', [request.param('id')], function () {
+      
+        response.redirect('/board');
+    });
+});
+// todo 관련 js 로 컨트롤 필요
+
+app.get('/todo', function (request, response) {	
+   
+        response.send(data);
+
+});
+
+app.post('/todo', function (request, response) {
+   
+    var body = request.body;
+
+    connection.query('INSERT INTO todolist (contents) VALUES (?)', [
+        body.contents
+    ], function () {
+        
+        response.redirect('/todo');
+    });
+});
+
 
 app.listen(3000, function () {
     console.log('Server Running at http://127.0.0.1:3000');

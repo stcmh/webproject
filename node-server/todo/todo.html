@@ -23,18 +23,32 @@
     .todo-list {
         margin-top:25px;
     }
+
+    h1 {
+        position: relative;
+        left: middle;
+        top: 100px;
+    }
+    a 
+    {
+        text-decoration-line: none;
+        color: blue;
+    }
     </style>
     <title>To Do List</title>
 </head>
 <body>
-    <h1>To Do List</h1>
+    <h2>To Do List</h2>
         <div class="container">
             <input id="inputField" type="text">   
-            <button type="button" id = "ToDoEvent"> 추가 </button> 
-            <div class="todo-list" id="toDoList"> 
-        </div>  
-
+            <input type="submit" id = "ToDoEvent"></button> 
+            <div class="todo-list" id="toDoList"> </div>  
+            <% data.forEach(function(item, index) { %>
+                <li>  <%= item.contents %>  <a href="/remove/<%= item.contents %>"> 삭제 </a></li>
+                    
+            <% }); %>
         </div>
+        <a href="/"><h1>home</h1></a>
         <script>
             let inputBox = document.getElementById('inputField');  
             let ToDoEvent = document.getElementById('ToDoEvent');      
