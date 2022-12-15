@@ -2,17 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/inputStyle.css">    
+    <style> 
+    html, body {
+        width: 50%;
+        margin: 0 auto;
+    }
+    
+    .container {
+        width: 360px;
+    }
+    
+    #inputField {
+        width: 200px;
+        height: 30px;
+        border: 1px solid black;
+        outline: none;
+        font-size: 15px;
+    }
+    
+    .todo-list {
+        margin-top:25px;
+    }
+    </style>
     <title>To Do List</title>
 </head>
 <body>
     <h1>To Do List</h1>
-    <div class="container">
-        <input id="inputField" type="text">   
-        <button id="ToDoEvent"> 추가하기 </button>     
-        <div class="todo-list" id="toDoList"> </div>  
+        <div class="container">
+            <input id="inputField" type="text">   
+            <button type="button" id = "ToDoEvent"> 추가 </button> 
+            <div class="todo-list" id="toDoList"> 
+        </div>  
 
-    </div>
-    <script src="javascript/todo.js"> </script>  
+        </div>
+        <script>
+            let inputBox = document.getElementById('inputField');  
+            let ToDoEvent = document.getElementById('ToDoEvent');      
+            let toDoList = document.getElementById('toDoList');   
+
+            ToDoEvent.addEventListener('click', function(){    //
+                var list = document.createElement('li');     
+                if (!inputBox.value)            
+                    alert('내용을 입력하세요.');
+                else
+                {
+                    list.innerText = inputBox.value;  
+                    toDoList.appendChild(list);       
+                    inputBox.value= "";              
+                }
+
+            list.addEventListener('click', function(){      
+                list.style.textDecoration = "line-through";
+            })
+            list.addEventListener('dblclick', function(){  
+                toDoList.removeChild(list);
+            })
+            })
+     </script>  
 </body>
 </html>

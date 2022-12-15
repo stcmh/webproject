@@ -120,18 +120,9 @@ app.get('/home', restrict, function(request, response) {
 	}
 });
 
-app.get('/todo', function(request, response) {
-	if (request.session.loggedin) {
-		response.sendFile(path.join(__dirname + '/my/todo.html'));
-	} else {
-		response.send('Please login to view this page!');
-		response.end();
-	}
-});
-
 // Board
 app.get('/board', function (request, response) { 
-    // ?O; P½4??
+   
     fs.readFile(__dirname + '/board/memo.html', 'utf8', function (error, data) {
         // 데이터 베이스 쿼리를 실행합니다
         connection.query('SELECT * FROM products', function (error, results) {
@@ -192,6 +183,8 @@ app.post('/edit/:id', function (request, response) {
     });
 });
 
+
 app.listen(3000, function () {
     console.log('Server Running at http://127.0.0.1:3000');
 });
+
